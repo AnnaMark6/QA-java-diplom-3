@@ -10,12 +10,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.LoginPage;
 import pageobjects.MainPage;
 import pageobjects.PersonalCabinetPage;
 
-import java.time.Duration;
 
 public class PersonalCabinetTest {
 
@@ -40,8 +38,7 @@ public class PersonalCabinetTest {
     @DisplayName("Переход по клику на «Личный кабинет»")
     public void clickToPersonalCabinetButtonTest(){
         personalCabinetPage.clickPersonalCabinetButton();
-        Assert.assertTrue("Перешли в Личный кабинет", new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> personalCabinetPage.getLogoutButton().isDisplayed()));
+        Assert.assertTrue("Перешли в Личный кабинет", personalCabinetPage.getLogoutButton().isDisplayed());
     }
 
     @Test
@@ -63,8 +60,7 @@ public class PersonalCabinetTest {
     public void logoutButtonTest(){
         personalCabinetPage.clickPersonalCabinetButton();
         personalCabinetPage.logout();
-        Assert.assertTrue("Вышли из аккаунта", new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> loginPage.getLoginButton().isDisplayed()));
+        Assert.assertTrue("Вышли из аккаунта", loginPage.getLoginButton().isDisplayed());
     }
 
     @After

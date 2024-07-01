@@ -4,6 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 
 public class WebDriverFactory {
 
@@ -23,6 +25,7 @@ public class WebDriverFactory {
                         default:
                             throw new RuntimeException("Unsupported browser:" + browser);
                     }
+                    webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 }
                 return webDriver;
             }

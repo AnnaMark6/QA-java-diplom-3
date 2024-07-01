@@ -5,10 +5,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.MainPage;
 
-import java.time.Duration;
 
 
 public class ConstructorTest {
@@ -21,11 +19,9 @@ public class ConstructorTest {
     public void bunSectionTest() {
         mainPage.open();
         mainPage.clickSaucesSection();
-        new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> mainPage.getBunSection().isEnabled());
+        mainPage.getBunSection().isEnabled();
         mainPage.clickBunSection();
-        Assert.assertTrue("Переход к разделу «Булки»", new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> mainPage.getSelectedSection().contains("Булки")));
+        Assert.assertTrue("Переход к разделу «Булки»", mainPage.getSelectedSection().contains("Булки"));
     }
 
     @Test
@@ -33,8 +29,7 @@ public class ConstructorTest {
     public void saucesSectionTest() {
         mainPage.open();
         mainPage.clickSaucesSection();
-        Assert.assertTrue("Переход к разделу «Соусы»", new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> mainPage.getSelectedSection().contains("Соусы")));
+        Assert.assertTrue("Переход к разделу «Соусы»", mainPage.getSelectedSection().contains("Соусы"));
     }
 
     @Test
@@ -42,8 +37,7 @@ public class ConstructorTest {
     public void fillingSectionTest() {
         mainPage.open();
         mainPage.clickFillingsSection();
-        Assert.assertTrue("Переход к разделу «Начинки»", new WebDriverWait(webDriverFactory.getWebDriver(),
-                Duration.ofSeconds(8)).until(driver -> mainPage.getSelectedSection().contains("Начинки")));
+        Assert.assertTrue("Переход к разделу «Начинки»", mainPage.getSelectedSection().contains("Начинки"));
     }
 
     @After
